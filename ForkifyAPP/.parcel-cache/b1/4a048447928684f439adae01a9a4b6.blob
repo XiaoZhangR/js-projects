@@ -1,0 +1,12 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _iconsSvg = require("url:../../img/icons.svg");
+var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+class SearchView {
+    #parentElement = document.querySelector('.search');
+    #errorMessage = 'We could not found this recipe. Please try another one!';
+    getQuery() {
+        return this.#parentElement.querySelector('.search__field').value;
+    }
+}
+exports.default = new SearchView();

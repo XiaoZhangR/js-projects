@@ -1,0 +1,25 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _iconsSvg = require("url:../../img/icons.svg");
+var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+class SearchView {
+    #parentElement = document.querySelector('.search');
+    #errorMessage = 'We could not found this recipe. Please try another one!';
+    getQuery() {
+        const query = this.#parentElement.querySelector('.search__field').value;
+        this.#clearInput();
+        return query;
+    }
+     #clearInput() {
+        this.#parentElement.querySelector('.search__field').value = '';
+    }
+    addHandlerSearch(handler) {
+        this.#parentElement.addEventListener('submit', function(e) {
+            // when we submit a form, we need to first prevent the default action
+            // otherwise the page will going to reload
+            e.preventDefault();
+            handler();
+        });
+    }
+}
+exports.default = new SearchView();
